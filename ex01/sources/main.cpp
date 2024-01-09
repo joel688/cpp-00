@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joakoeni <joakoeni@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:04:21 by joakoeni          #+#    #+#             */
-/*   Updated: 2024/01/03 14:22:34 by joakoeni         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:12:28 by joakoeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int main (void)
 {
@@ -25,7 +25,7 @@ int main (void)
 
     if (command == "ADD")
     {
-      while(PB.num <= 8 && PB.nb_contact[PB.num].name != "NULL")
+      while(PB.num <= 8 && PB.nb_contact[PB.num].first_name != "NULL")
         PB.num++;
       PB.ft_add_contact();
       PB.num = 0;
