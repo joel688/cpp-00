@@ -1,17 +1,17 @@
 NAME		=			phonebook
 
 CXX			=			g++
-CXXFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Iincludes/
+CXXFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-SRCS		=			sources/main.cpp\
-
-HDRS		=			includes/PhoneBook.hpp\
+SRCS		=			main.cpp\
+						Class/PhoneBook/PhoneBook.cpp\
+						Class/Contact/Contact.cpp\
 
 OBJS		=			$(SRCS:.cpp=.o)
 
 all			:			$(NAME)
 
-$(NAME)		:			$(OBJS) $(HDRS)
+$(NAME)		:			$(OBJS)
 						$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean		:
