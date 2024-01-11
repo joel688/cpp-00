@@ -22,6 +22,7 @@ Contact::Contact()
   this->darkest_secret = "";
   this->phone_number = "";
 	this->index = 0;
+  return ;
 }
 
 // ----------Setters----------
@@ -29,31 +30,37 @@ Contact::Contact()
 void  Contact::SetIndex(int index)
 {
   this->index = index;
+  return ;
 }
 
 void  Contact::SetFirstName(std::string first_name)
 {
   this->first_name = first_name;
+  return ;
 }
 
 void  Contact::SetLastName(std::string last_name)
 {
   this->last_name = last_name;
+  return ;
 }
 
 void  Contact::SetNickname(std::string nickname)
 {
   this->nickname = nickname;
+  return ;
 }
 
 void  Contact::SetPhoneNumber(std::string phone_number)
 {
   this->phone_number = phone_number;
+  return ;
 }
 
 void  Contact::SetDarkestSecret(std::string darkest_secret)
 {
   this->darkest_secret = darkest_secret;
+  return ;
 }
 
 // ----------Getters----------
