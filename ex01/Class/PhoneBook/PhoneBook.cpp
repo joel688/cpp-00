@@ -14,11 +14,11 @@ PhoneBook::PhoneBook()
 void  PhoneBook::SetContact(Contact new_contact)
 {
   new_contact.SetIndex(num);
-  if(num <= 8)
+  if(num <= MAX_CONTACT)
     contact_list[num++] = new_contact;
   else
   {
-    if(older <= 8)
+    if(older <= MAX_CONTACT)
       contact_list[older++] = new_contact;
     else
     {
@@ -26,7 +26,7 @@ void  PhoneBook::SetContact(Contact new_contact)
       contact_list[older++] = new_contact;
     }
   }
-  if(num >= 8)
+  if(num >= MAX_CONTACT)
     SetNum();
 	std::cout << "Contact added successfully! (great sucessssss)" << std::endl;
 }
@@ -94,7 +94,7 @@ void PhoneBook::SearchContact(void)
     std::cout << "Index out of range u stupid..." << std::endl;
     SearchContact();
   }
-  if(index_to_search <= 7 && contact_list[index_to_search].GetFirstName() == "")
+  if(index_to_search <= (MAX_CONTACT - 1) && contact_list[index_to_search].GetFirstName() == "")
   {
     std::system("clear");
 		std::cout << "No contact at this index." << std::endl;
@@ -106,7 +106,7 @@ void PhoneBook::SearchContact(void)
 void  PhoneBook::DisplayInfo(void)
 {
   int i = 0;
-  while(contact_list[i].GetFirstName() != "" && i <= 7)
+  while(contact_list[i].GetFirstName() != "" && i <= (MAX_CONTACT - 1))
   {
     std::cout << std::setw(10) << contact_list[i].GetIndex() << "|";
     if(contact_list[i].GetFirstName().length() <= 10)
