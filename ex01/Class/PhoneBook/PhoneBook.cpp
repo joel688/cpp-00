@@ -55,7 +55,7 @@ void  PhoneBook::AddContact(void)
   Contact new_contact;
   std::string input;
 
-  system("clear");
+  std::system("clear");
   std::cout << "You choose to add contact. Remember, your phonebook can't contain more than 8 contacts, and will replace the older contact you have when it is full."<< std::endl;
   
   std::cout << "Enter new contact first name: " << std::endl;
@@ -90,13 +90,13 @@ void PhoneBook::SearchContact(void)
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    system("clear");
+    std::system("clear");
     std::cout << "Index out of range u stupid..." << std::endl;
     SearchContact();
   }
   if(index_to_search <= 7 && contact_list[index_to_search].GetFirstName() == "")
   {
-    system("clear");
+    std::system("clear");
 		std::cout << "No contact at this index." << std::endl;
     SearchContact();
   }
@@ -128,7 +128,7 @@ void  PhoneBook::DisplayInfo(void)
 
 void  PhoneBook::DisplayContactInfo(int index)
 {
-  system("clear");
+  std::system("clear");
   std::cout << contact_list[index].GetIndex() << std::endl;
   std::cout << contact_list[index].GetFirstName() << std::endl;
   std::cout << contact_list[index].GetLastName() << std::endl;
@@ -146,12 +146,12 @@ void  PhoneBook::Execution(void)
     std::cin >>  command;
     if (command == "ADD")
     {
-	    system("clear");
+      std::system("clear");
       this->AddContact();
     }
     if (command == "SEARCH")
 	  {
-	    system("clear");
+      std::system("clear");
       this->SearchContact();
 	  }
   }
