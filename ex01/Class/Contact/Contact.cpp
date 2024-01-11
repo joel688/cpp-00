@@ -12,91 +12,78 @@
 
 #include "Contact.hpp"
 
+// ----------Constructors----------
+
 Contact::Contact()
-    {
-      first_name = "NULL";
-      last_name = "NULL";
-      nickname = "NULL";
-      darkest_secret = "NULL";
-      phone_number = "NULL";
-	  index = 0;
-    }
-
-void Contact::display_info()
-    {
-		std::cout << std::setw(10) << index << "|";
-		if(first_name.length() <= 10)
-			std::cout << std::setw(10) << first_name << "|";
-		else
-			std::cout << std::setw(9) << first_name << ".|";
-		if(last_name.length() <= 10)
-			std::cout << std::setw(10) << last_name << "|";
-		else
-			std::cout << std::setw(9) << last_name << ".|";
-		if(nickname.length() <= 10)
-			std::cout << std::setw(10) << nickname << "|";
-		else
-			std::cout << std::setw(9) << nickname << ".|";
-		if(phone_number.length() <= 10)
-			std::cout << std::setw(10) << phone_number << std::endl;
-		else
-			std::cout << std::setw(9) << phone_number << ".|";
-    }
-
-void Contact::ft_add_contact()
 {
-	system("clear");
-    std::cout << "You choose to add contact. Remember, your phonebook can't contain more than 8 contacts, and will replace the older contact you have when it is full."<< std::endl;
-
-    if(num <= 7)
-    {
-		std::cout << "Enter new contact first name: " << std::endl;
-        std::cin >> nb_contact[num].first_name;
-        std::cout << "Enter new contact last name: " << std::endl;
-        std::cin >> nb_contact[num].last_name;
-        std::cout << "Enter new contact nickname: " << std::endl;
-        std::cin >> nb_contact[num].nickname;
-		std::cout << "Enter new contact darkest secret: " << std::endl;
-        std::cin >> nb_contact[num].darkest_secret;
-		std::cout << "Enter new contact number: " << std::endl;
-        std::cin >> nb_contact[num].phone_number;
-		nb_contact[num].index = num;
-    }
-	else
-    {
-			//remplacer plus vieux
-    }
-	std::cout << "Contact added successfully! (great sucessssss)" << std::endl;
-	num = 0;
+  this->first_name = "";
+  this->last_name = "";
+  this->nickname = "";
+  this->darkest_secret = "";
+  this->phone_number = "";
+	this->index = 0;
 }
 
-void Contact::ft_search_contact()
+// ----------Setters----------
+
+void  Contact::SetIndex(int index)
 {
-	system("clear");
-    std::string to_search;
-    if(nb_contact[0].first_name == "NULL")
-		std::cout << "The phonebook is empty." << std::endl;
-    else
-    {
-		while(num <= 7)
-			nb_contact[num++].display_info();
-        std::cout << "You want to search a contact, give me a index." << std::endl;
-        std::cin >> to_search;
-        while(num <= 7 && (nb_contact[num].first_name != to_search || nb_contact[num].last_name != to_search))
-          num++;
-        system("clear");
-        nb_contact[num].display_info();
-    }
-    num = 0;
+  this->index = index;
 }
 
-void Contact::ft_show_all()
+void  Contact::SetFirstName(std::string first_name)
 {
-	system("clear");
-	while(num <= 7)
-	{
-		if(nb_contact[num].first_name != "NULL")
-			nb_contact[num].display_info();
-        num++;
-    }
+  this->first_name = first_name;
+}
+
+void  Contact::SetLastName(std::string last_name)
+{
+  this->last_name = last_name;
+}
+
+void  Contact::SetNickname(std::string nickname)
+{
+  this->nickname = nickname;
+}
+
+void  Contact::SetPhoneNumber(std::string phone_number)
+{
+  this->phone_number = phone_number;
+}
+
+void  Contact::SetDarkestSecret(std::string darkest_secret)
+{
+  this->darkest_secret = darkest_secret;
+}
+
+// ----------Getters----------
+
+const std::string& Contact::GetFirstName(void) const
+{
+  return (this->first_name);
+}
+
+const std::string& Contact::GetLastName(void) const
+{
+  return (this->last_name);
+}
+
+const std::string& Contact::GetNickname(void) const
+{
+  return (this->nickname);
+}
+
+const std::string& Contact::GetDarkestSecret(void) const
+{
+  return (this->darkest_secret);
+}
+
+const std::string& Contact::GetPhoneNumber(void) const
+{
+  return (this->phone_number);
+}
+
+const int& Contact::GetIndex(void) const
+{
+  return(this->index);
 }

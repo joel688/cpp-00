@@ -1,11 +1,11 @@
 NAME		=			phonebook
 
 CXX			=			g++
-CXXFLAGS	=			-Wall -Wextra -Werror -std=c++98
+CXXFLAGS	=			-Wall -Wextra -Werror -std=c++98 -g3
 
 SRCS		=			main.cpp\
-						Class/PhoneBook/PhoneBook.cpp\
 						Class/Contact/Contact.cpp\
+						Class/PhoneBook/PhoneBook.cpp\
 
 OBJS		=			$(SRCS:.cpp=.o)
 

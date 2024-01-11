@@ -13,14 +13,31 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
+#define MAX_CONTACT 8
+
 #include "../Contact/Contact.hpp"
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 class PhoneBook
 {
-    public:
-    Contact nb_contact[8];
-	std::string  command;
+  private:
+    Contact contact_list[MAX_CONTACT];
     int num;
+    int older;
+    void  AddContact(void);
+    void  SetContact(Contact);
+    void  SetNum(void);
+    void  SetOlder(void);
+    void  DisplayInfo(void);
+    void  SearchContact(void);
+    void  DisplayContactInfo(int index);
+    void  Execution(void);
+  public:
+    PhoneBook(void);
+    void  PrintHelp(void);
 };
 
 #endif

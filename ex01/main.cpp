@@ -10,30 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Class/PhoneBook/Phonebook.hpp"
+#include "./Class/PhoneBook/PhoneBook.hpp"
+#include "./Class/Contact/Contact.hpp"
 
 int main (void)
 {
-  PhoneBook PB;
-  std::string  command;
-  PB.num = 0;
-
-  while(command != "EXIT")
-  {
-	std::cout << "Please type : ADD to add contact, SEARCH to search contact, SHALL to show all contact, and EXIT to exit" << std::endl;
-    std::cin >>  command;
-
-    if (command == "ADD")
-	{
-
-	}
-    if (command == "SEARCH")
-	{
-
-	}
-    if (command == "SHALL")
-	{
-
-	}
-  }
+  PhoneBook();
 }
+
