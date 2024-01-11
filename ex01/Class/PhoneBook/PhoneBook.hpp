@@ -20,6 +20,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cstdlib>
+#include <limits>
 
 class PhoneBook
 {
@@ -28,6 +30,11 @@ class PhoneBook
     int num;
     int older;
     void  AddContact(void);
+    void  AddFirstName(Contact);
+    void  AddLastName(Contact);
+    void  AddNickname(Contact);
+    void  AddDarkestSecret(Contact);
+    void  AddPhoneNumber(Contact);
     void  SetContact(Contact);
     void  SetNum(void);
     void  SetOlder(void);

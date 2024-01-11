@@ -53,27 +53,82 @@ void  PhoneBook::PrintHelp()
 void  PhoneBook::AddContact(void)
 {
   Contact new_contact;
-  std::string input;
 
   std::system("clear");
   std::cout << "You choose to add contact. Remember, your phonebook can't contain more than 8 contacts, and will replace the older contact you have when it is full."<< std::endl;
-  
+  AddFirstName(new_contact);
+  return ;
+}
+
+void PhoneBook::AddFirstName(Contact new_contact)
+{
+  std::string input;
+
   std::cout << "Enter new contact first name: " << std::endl;
-  std::cin >> input;
-  new_contact.SetFirstName(input);
+  std::getline(std::cin, input);
+  if(input == "")
+    AddFirstName(new_contact);
+  else
+    new_contact.SetFirstName(input);
+  AddLastName(new_contact);
+  return ;
+}
+
+void PhoneBook::AddLastName(Contact new_contact)
+{
+  std::string input;
+
   std::cout << "Enter new contact last name: " << std::endl;
-  std::cin >> input;
-  new_contact.SetLastName(input);
+  std::getline(std::cin, input);
+  if(input == "")
+    AddLastName(new_contact);
+  else
+    new_contact.SetLastName(input);
+  AddNickname(new_contact);
+  return ;
+}
+
+void PhoneBook::AddNickname(Contact new_contact)
+{
+  std::string input;
+
   std::cout << "Enter new contact nickname: " << std::endl;
-  std::cin >> input;
+  std::getline(std::cin, input);
+  if(input == "")
+    AddNickname(new_contact);
+  else
     new_contact.SetNickname(input);
-	std::cout << "Enter new contact darkest secret: " << std::endl;
-  std::cin >> input;
+  AddDarkestSecret(new_contact);
+  return ;
+}
+
+void PhoneBook::AddDarkestSecret(Contact new_contact)
+{
+  std::string input;
+
+  std::cout << "Enter new contact darkest secret: " << std::endl;
+  std::getline(std::cin, input);
+  if(input == "")
+    AddDarkestSecret(new_contact);
+  else
     new_contact.SetDarkestSecret(input);
-	std::cout << "Enter new contact number: " << std::endl;
-  std::cin >> input;
-  new_contact.SetPhoneNumber(input);
+  AddPhoneNumber(new_contact);
+  return ;
+}
+
+void PhoneBook::AddPhoneNumber(Contact new_contact)
+{
+  std::string input;
+
+  std::cout << "Enter new contact phone number: " << std::endl;
+  std::getline(std::cin, input);
+  if(input == "")
+    AddPhoneNumber(new_contact);
+  else
+    new_contact.SetPhoneNumber(input);
   SetContact(new_contact);
+  std::system("clear");
+  return ;
 }
 
 void PhoneBook::SearchContact(void)
@@ -143,7 +198,7 @@ void  PhoneBook::Execution(void)
   while(command != "EXIT")
   {
 	  std::cout << "Please type : ADD to add contact, SEARCH to search contact, and EXIT to exit" << std::endl;
-    std::cin >>  command;
+    std::getline(std::cin, command);
     if (command == "ADD")
     {
       std::system("clear");

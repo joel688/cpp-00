@@ -15,6 +15,7 @@
 
 int main (void)
 {
+  std::system("clear");
   PhoneBook();
 }
 
