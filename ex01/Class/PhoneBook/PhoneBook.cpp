@@ -6,8 +6,14 @@ PhoneBook::PhoneBook()
 {
   this->num = 0;
   this->older = 0;
-  this->Execution();
   return ;
+}
+
+// ----------Destructors----------
+
+PhoneBook::~PhoneBook()
+{
+  std::cout << "PhoneBook ended" << std::endl;
 }
 
 // ----------Setters----------
@@ -44,7 +50,7 @@ void  PhoneBook::SetOlder()
   return ;
 }
 
-// -----------Utils----------
+// -----------Members Functions----------
 
 void  PhoneBook::PrintHelp()
 {
@@ -70,12 +76,13 @@ void PhoneBook::AddFirstName(Contact new_contact)
   std::string input;
 
   std::system("clear");
-  std::cout << "Enter new contact first name: " << std::endl;
-  std::getline(std::cin, input);
-  if(input == "")
-    this->AddFirstName(new_contact);
-  else
-    new_contact.SetFirstName(input);
+  while (input == "")
+  {
+    std::system("clear");
+    std::cout << "Enter new contact first name: " << std::endl;
+    std::getline(std::cin, input);
+  }
+  new_contact.SetFirstName(input);
   this->AddLastName(new_contact);
   return ;
 }
@@ -85,12 +92,13 @@ void PhoneBook::AddLastName(Contact new_contact)
   std::string input;
 
   std::system("clear");
-  std::cout << "Enter new contact last name: " << std::endl;
-  std::getline(std::cin, input);
-  if(input == "")
-    this->AddLastName(new_contact);
-  else
-    new_contact.SetLastName(input);
+  while (input == "")
+  {
+    std::system("clear");
+    std::cout << "Enter new contact last name: " << std::endl;
+    std::getline(std::cin, input);
+  }
+  new_contact.SetLastName(input);
   this->AddNickname(new_contact);
   return ;
 }
@@ -100,12 +108,13 @@ void PhoneBook::AddNickname(Contact new_contact)
   std::string input;
 
   std::system("clear");
-  std::cout << "Enter new contact nickname: " << std::endl;
-  std::getline(std::cin, input);
-  if(input == "")
-    this->AddNickname(new_contact);
-  else
-    new_contact.SetNickname(input);
+  while (input == "")
+  {
+    std::system("clear");
+    std::cout << "Enter new contact nickname: " << std::endl;
+    std::getline(std::cin, input);
+  }
+  new_contact.SetNickname(input);
   this->AddDarkestSecret(new_contact);
   return ;
 }
@@ -115,12 +124,13 @@ void PhoneBook::AddDarkestSecret(Contact new_contact)
   std::string input;
 
   std::system("clear");
-  std::cout << "Enter new contact darkest secret: " << std::endl;
-  std::getline(std::cin, input);
-  if(input == "")
-    this->AddDarkestSecret(new_contact);
-  else
-    new_contact.SetDarkestSecret(input);
+  while (input == "")
+  {
+    std::system("clear");
+    std::cout << "Enter new contact darkest secret: " << std::endl;
+    std::getline(std::cin, input);
+  }
+  new_contact.SetDarkestSecret(input);
   this->AddPhoneNumber(new_contact);
   return ;
 }
@@ -130,12 +140,13 @@ void PhoneBook::AddPhoneNumber(Contact new_contact)
   std::string input;
 
   std::system("clear");
-  std::cout << "Enter new contact phone number: " << std::endl;
-  std::getline(std::cin, input);
-  if(input == "")
-    this->AddPhoneNumber(new_contact);
-  else
-    new_contact.SetPhoneNumber(input);
+  while (input == "")
+  {
+    std::system("clear");
+    std::cout << "Enter new contact phone number: " << std::endl;
+    std::getline(std::cin, input);
+  }
+  new_contact.SetPhoneNumber(input);
   this->SetContact(new_contact);
   std::system("clear");
   return ;
@@ -163,10 +174,9 @@ void PhoneBook::SearchContact(void)
   {
     std::system("clear");
 		std::cout << "No contact at this index." << std::endl;
-    this->SearchContact();
+    return ;
   }
   this->DisplayContactInfo(index_to_search);
-  printf("lol\n");
   return ;
 }
 
@@ -176,18 +186,9 @@ void  PhoneBook::DisplayInfo(void)
   while(this->contact_list[i].GetFirstName() != "" && i <= (MAX_CONTACT - 1))
   {
     std::cout << std::setw(10) << this->contact_list[i].GetIndex() << "|";
-    if(this->contact_list[i].GetFirstName().length() <= 10)
-      std::cout << std::setw(10) << this->contact_list[i].GetFirstName() << "|";
-    else
-      std::cout << std::setw(9) << this->contact_list[i].GetFirstName() << ".|";
-    if(contact_list[i].GetLastName().length() <= 10)
-      std::cout << std::setw(10) << this->contact_list[i].GetLastName() << "|";
-    else
-      std::cout << std::setw(9) << this->contact_list[i].GetLastName() << ".|";
-    if(this->contact_list[i].GetNickname().length() <= 10)
-      std::cout << std::setw(10) << this->contact_list[i].GetNickname() << "|";
-    else
-      std::cout << std::setw(9) << this->contact_list[i].GetNickname() << ".|";
+    std::cout << std::setw(10) << TruncateString(this->contact_list[i].GetFirstName()) << "|";
+    std::cout << std::setw(10) << TruncateString(this->contact_list[i].GetLastName()) << "|";
+    std::cout << std::setw(10) << TruncateString(this->contact_list[i].GetNickname()) << "|";
     std::cout << std::endl;
     i++;
   }
@@ -206,22 +207,33 @@ void  PhoneBook::DisplayContactInfo(int index)
   return ;
 }
 
-void  PhoneBook::Execution(void)
+std::string  PhoneBook::TruncateString(const std::string& to_truncate)
+{
+  if (to_truncate.length() > 10)
+    return (to_truncate.substr(0, 10 - 1) + ".");
+  return (to_truncate);
+}
+
+// ----------Non Members Functions----------
+
+void  Execution(void)
 {
   std::string  command;
+  PhoneBook PB;
   while(command != "EXIT")
   {
+    command = "";
 	  std::cout << "Please type : ADD to add contact, SEARCH to search contact, and EXIT to exit" << std::endl;
     std::getline(std::cin, command);
     if (command == "ADD")
     {
       std::system("clear");
-      this->AddContact();
+      PB.AddContact();
     }
     if (command == "SEARCH")
 	  {
       std::system("clear");
-      this->SearchContact();
+      PB.SearchContact();
 	  }
   }
   return ;

@@ -29,7 +29,6 @@ class PhoneBook
     Contact contact_list[MAX_CONTACT];
     int num;
     int older;
-    void  AddContact(void);
     void  AddFirstName(Contact);
     void  AddLastName(Contact);
     void  AddNickname(Contact);
@@ -38,13 +37,17 @@ class PhoneBook
     void  SetContact(Contact);
     void  SetNum(void);
     void  SetOlder(void);
-    void  DisplayInfo(void);
-    void  SearchContact(void);
-    void  DisplayContactInfo(int index);
-    void  Execution(void);
   public:
     PhoneBook(void);
+    ~PhoneBook(void);
     void  PrintHelp(void);
+    void  AddContact(void);
+    void  DisplayInfo(void);
+    void  DisplayContactInfo(int index);
+    void  SearchContact(void);
+    std::string TruncateString(const std::string& to_truncate);
 };
+
+    void  Execution(void);
 
 #endif
