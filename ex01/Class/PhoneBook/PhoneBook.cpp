@@ -168,7 +168,7 @@ void PhoneBook::SearchContact(void)
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::system("clear");
     std::cout << "Index out of range u stupid..." << std::endl;
-    this->SearchContact();
+    std::cout << "You want to search a contact, give me a index between 0 and 7." << std::endl;
   }
   if(index_to_search <= (MAX_CONTACT - 1) && contact_list[index_to_search].GetFirstName() == "")
   {
