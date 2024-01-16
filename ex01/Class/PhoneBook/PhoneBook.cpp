@@ -56,7 +56,7 @@ void  PhoneBook::PrintHelp()
 {
   std::cout << "Type ADD    to Add a contact." << std::endl;
   std::cout << "Type SEARCH to Search a contact." << std::endl;
-  std::cout << "Type Exit   to Exit the phonebook." << std::endl;
+  std::cout << "Type EXIT   to Exit the phonebook." << std::endl;
   return ;
 }
 
@@ -166,10 +166,9 @@ void PhoneBook::SearchContact(void)
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::system("clear");
-    std::cout << "Index out of range u stupid..." << std::endl;
-    std::cout << "You want to search a contact, give me a index between 0 and 7." << std::endl;
+    std::cout << "Index out of range u stupid... Send an index between 0 and 7." << std::endl;
   }
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   if(index_to_search <= (MAX_CONTACT - 1) && contact_list[index_to_search].GetFirstName() == "")
   {
     std::system("clear");
@@ -223,7 +222,7 @@ void  Execution(void)
   while(command != "EXIT")
   {
     command = "";
-	  std::cout << "Please type : ADD to add contact, SEARCH to search contact, and EXIT to exit" << std::endl;
+    PB.PrintHelp();
     std::getline(std::cin, command);
     if (command == "ADD")
     {
