@@ -6,7 +6,7 @@
 /*   By: joakoeni <joakoeni@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:42:36 by joakoeni          #+#    #+#             */
-/*   Updated: 2024/01/18 10:42:39 by joakoeni         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:43:50 by joakoeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ void  PhoneBook::AddContact(void)
   std::system("clear");
   std::cout << "You choose to add contact. Remember, your phonebook can't contain more than 8 contacts, and will replace the older contact you have when it is full."<< std::endl;
   this->AddFirstName(new_contact);
-	std::cout << "Contact added successfully! (great sucessssss)" << std::endl;
+  if(std::cin.eof())
+    return;
+  std::cout << "Contact added successfully! (great sucessssss)" << std::endl;
   return ;
 }
 
@@ -93,6 +95,8 @@ void PhoneBook::AddFirstName(Contact new_contact)
     std::system("clear");
     std::cout << "Enter new contact first name: " << std::endl;
     std::getline(std::cin, input);
+    if(std::cin.eof())
+      return;
   }
   new_contact.SetFirstName(input);
   this->AddLastName(new_contact);
@@ -109,6 +113,8 @@ void PhoneBook::AddLastName(Contact new_contact)
     std::system("clear");
     std::cout << "Enter new contact last name: " << std::endl;
     std::getline(std::cin, input);
+    if(std::cin.eof())
+      return;
   }
   new_contact.SetLastName(input);
   this->AddNickname(new_contact);
@@ -125,6 +131,8 @@ void PhoneBook::AddNickname(Contact new_contact)
     std::system("clear");
     std::cout << "Enter new contact nickname: " << std::endl;
     std::getline(std::cin, input);
+    if(std::cin.eof())
+      return;
   }
   new_contact.SetNickname(input);
   this->AddDarkestSecret(new_contact);
@@ -141,6 +149,8 @@ void PhoneBook::AddDarkestSecret(Contact new_contact)
     std::system("clear");
     std::cout << "Enter new contact darkest secret: " << std::endl;
     std::getline(std::cin, input);
+    if(std::cin.eof())
+      return;
   }
   new_contact.SetDarkestSecret(input);
   this->AddPhoneNumber(new_contact);
@@ -157,6 +167,8 @@ void PhoneBook::AddPhoneNumber(Contact new_contact)
     std::system("clear");
     std::cout << "Enter new contact phone number: " << std::endl;
     std::getline(std::cin, input);
+    if(std::cin.eof())
+      return;
   }
   new_contact.SetPhoneNumber(input);
   this->SetContact(new_contact);
@@ -188,6 +200,8 @@ void PhoneBook::SearchContact(void)
     return ;
   }
   this->DisplayContactInfo(index_to_search);
+	if(std::cin.eof())
+		return;
   return ;
 }
 
@@ -246,6 +260,8 @@ void  Execution(void)
       std::system("clear");
       PB.SearchContact();
 	  }
+	if(std::cin.eof())
+		return;
   }
   return ;
 }
